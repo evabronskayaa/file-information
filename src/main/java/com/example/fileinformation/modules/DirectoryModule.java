@@ -13,7 +13,7 @@ public class DirectoryModule extends Module {
     
     @Override
     public String getDescription() {
-        return "files - Список файлов\n" + "size - Размер всех файлов\n" + "";
+        return "files - Список файлов\n" + "size - Размер всех файлов\n" + "count - количество файлов";
     }
     
     @Override
@@ -25,9 +25,19 @@ public class DirectoryModule extends Module {
             case "size":
                 printSize(file);
                 break;
-            case "":
+            case "count":
+                printCount(file);
                 break;
         }
+    }
+
+    private void printCount(File directory) {
+        File[] files = directory.listFiles();
+        if (files == null) {
+            return;
+        }
+
+        System.out.println(files.length);
     }
     
     private void printFiles(File directory) {

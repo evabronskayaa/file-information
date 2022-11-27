@@ -65,7 +65,9 @@ public class TextModule extends Module {
     
     @Override
     public String getDescription() {
-        return "count - Вывод количества строк\n" + "symbols - Вывод частоты входа каждого символа\n" + "ngram - Вывод n-грамм";
+        return "count - Вывод количества строк\n" +
+                "symbols - Вывод частоты входа каждого символа\n" +
+                "ngram - Вывод n-грамм";
     }
     
     @Override

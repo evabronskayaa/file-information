@@ -21,7 +21,7 @@ public class MusicModule extends Module {
     public String getDescription() {
         return "name - Название трека\n" +
             "time - Длительность в секундах\n" +
-            "";
+            "author - Автор";
     }
     
     @Override
@@ -33,11 +33,23 @@ public class MusicModule extends Module {
             case "time":
                 printTime(file);
                 break;
-            case "":
+            case "author":
+                printAuthor(file);
                 break;
         }
     }
-    
+
+    private void printAuthor(File file) {
+        try {
+            AudioFileFormat fileFormat = AudioSystem.getAudioFileFormat(file);
+            if (fileFormat instanceof TAudioFileFormat) {
+                System.out.println(fileFormat.properties().get("author"));
+            }
+        } catch (IOException | UnsupportedAudioFileException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     private void printName(File file) {
         try {
             AudioFileFormat fileFormat = AudioSystem.getAudioFileFormat(file);
